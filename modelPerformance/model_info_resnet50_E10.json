@@ -1,0 +1,22 @@
+{
+    "model_version": "1.0",
+    "description": {
+        "model_name": "ResNet50",
+        "training_parameters": {
+            "epochs": 10,
+            "batch_size": 93,
+            "training_time": "50 minutes",
+            "input_shape": "(5000, 12)",
+            "loss_function": "BinaryCrossentropy",
+            "optimizer": "Adam",
+            "learning_rate": 0.001
+        },
+        "metrics": [
+            "Binary Accuracy",
+            "Recall",
+            "Precision",
+            "AUC (ROC Curve)"
+        ],
+        "last_update": "2024-08-25"
+    }
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Plans - Predict</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <!-- Navigation Bar -->
+    <nav class="mt-4 ">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" >
+              <div class="text-2xl font-bold ml-8"><i class="ri-drag-move-fill text-3xl"></i>Predict</div>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/home" class="text-black hover:text-blue-500 text-xl">Home</a>
+                <a href="/about" class="text-black hover:text-blue-500 text-xl">About</a>
+                <a href="/services" class="text-black hover:text-blue-500 text-xl">Services</a>
+                <a href="/blog" class="text-black hover:text-blue-500 text-xl">Blog</a>
+                <a href="/subscription" class="text-black hover:text-blue-500 text-xl">Subscription</a>
+                <div>
+                    <a href="/login" class="bg-blue-500  ml-8  text-white px-4 py-3 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200  "><i class="ri-user-3-line "></i></a>
+                </div>
+            </div>           
+        </div>
+    </nav>
+
+    <!-- Subscription Header -->
+    <header class="bg-blue-500 text-white py-16">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-4">Choose Your Subscription Plan</h1>
+            <p class="text-lg">Select the plan that best suits your needs and get access to all the premium features.</p>
+        </div>
+    </header>
+
+    <!-- Subscription Plans -->
+    <main class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold mb-4">Our Plans</h2>
+            <p class="text-gray-700">We offer a variety of plans to fit different needs and budgets. Explore the details below and choose the best plan for you.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Basic Plan -->
+            <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                <h3 class="text-2xl font-semibold mb-4">Basic Plan</h3>
+                <p class="text-xl font-bold mb-4">$10/month</p>
+                <ul class="mb-6 list-disc list-inside space-y-2">
+                    <li>Access to essential features and tools.</li>
+                    <li>10GB of cloud storage for your data.</li>
+                    <li>Email support with response within 48 hours.</li>
+                    <li>Weekly newsletter with updates and tips.</li>
+                </ul>
+                <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200 transition duration-300 ease-in-out">Choose Basic Plan</a>
+            </div>
+
+            <!-- Standard Plan -->
+            <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                <h3 class="text-2xl font-semibold mb-4">Standard Plan</h3>
+                <p class="text-xl font-bold mb-4">$20/month</p>
+                <ul class="mb-6 list-disc list-inside space-y-2">
+                    <li>Access to all features including advanced tools.</li>
+                    <li>50GB of cloud storage for your data.</li>
+                    <li>Priority email support with response within 24 hours.</li>
+                    <li>Monthly updates with new feature announcements.</li>
+                    <li>Access to exclusive webinars and tutorials.</li>
+                </ul>
+                <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200 transition duration-300 ease-in-out">Choose Standard Plan</a>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                <h3 class="text-2xl font-semibold mb-4">Premium Plan</h3>
+                <p class="text-xl font-bold mb-4">$30/month</p>
+                <ul class="mb-6 list-disc list-inside space-y-2">
+                    <li>All features included plus premium tools.</li>
+                    <li>Unlimited cloud storage for your data.</li>
+                    <li>24/7 customer support with dedicated account manager.</li>
+                    <li>Quarterly consultations to help you maximize the use of our platform.</li>
+                    <li>Early access to new features and updates.</li>
+                </ul>
+                <a href="#" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200 transition duration-300 ease-in-out">Choose Premium Plan</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FAQ Section -->
+    <section class="container mx-auto mt-16 p-6 bg-white rounded-lg shadow-md">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+        </div>
+        <div class="space-y-4">
+            <!-- FAQ Item -->
+            <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">What is included in each plan?</h3>
+                <p class="text-gray-700">Each plan comes with different levels of access and support. The Basic Plan includes essential features, the Standard Plan adds priority support and exclusive content, while the Premium Plan offers the most comprehensive package with unlimited storage and 24/7 support.</p>
+            </div>
+
+            <!-- FAQ Item -->
+            <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Can I upgrade or downgrade my plan later?</h3>
+                <p class="text-gray-700">Yes, you can easily upgrade or downgrade your plan at any time. To do so, simply visit your account settings or contact our support team, and we will assist you with the process.</p>
+            </div>
+
+            <!-- FAQ Item -->
+            <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">What payment methods are accepted?</h3>
+                <p class="text-gray-700">We accept major credit cards (Visa, MasterCard, American Express), PayPal, and other secure payment methods. You can select your preferred payment option during the checkout process.</p>
+            </div>
+
+            <!-- FAQ Item -->
+            <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">How can I cancel my subscription?</h3>
+                <p class="text-gray-700">You can cancel your subscription at any time through your account settings on our website. Please refer to our cancellation policy for more details, and contact our support team if you need further assistance.</p>
+            </div>
+
+            <!-- FAQ Item -->
+            <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">What happens if I miss a payment?</h3>
+                <p class="text-gray-700">If a payment fails, your account may be suspended temporarily until the issue is resolved. You will receive notifications regarding the payment issue and instructions on how to fix it. Recurrent issues may lead to account deactivation.</p>
+            </div>
+
+            <!-- FAQ Item -->
+            <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-2">Do you offer a free trial?</h3>
+                <p class="text-gray-700">Yes, we offer a 7-day free trial for new users to experience our services. You can sign up for the trial without providing payment information, and you can choose to subscribe to a plan at the end of the trial period.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-10 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-gray-700">&copy; 2024 Predict. All rights reserved.</div>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-blue-500 transition duration-300 ease-in-out">Privacy Policy</a>
+                <a href="#" class="text-gray-700 hover:text-blue-500 transition duration-300 ease-in-out">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

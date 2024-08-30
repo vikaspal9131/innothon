@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediction Form{% endblock %}
+
+{% block content %}
+
+    <!-- Main Content -->
+    <div class="w-full max-w-2xl p-6 mx-auto mt-24 bg-white rounded-lg shadow-md">
+        <h1 class="text-xl font-bold mb-4">Prediction Form</h1>
+
+        <!-- User Information Form -->
+        <div id="user-info-form">
+            <h2 class="text-lg font-semibold mb-4">User Information</h2>
+            <form id="form-user-info" action="/upload" method="POST" enctype="multipart/form-data">
+                <div class="mb-4">
+                    <label for="name" class="block text-gray-700">Name:</label>
+                    <input type="text" id="name" name="name" class="w-full p-2 border border-gray-300 rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="age" class="block text-gray-700">Age:</label>
+                    <input type="number" id="age" name="age" class="w-full p-2 border border-gray-300 rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="gender" class="block text-gray-700">Gender:</label>
+                    <select id="gender" name="gender" class="w-full p-2 border border-gray-300 rounded" required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label for="ecg-option" class="block text-gray-700">Select ECG Signal Option:</label>
+                    <select id="ecg-option" name="ecg-option" class="w-full p-2 border border-gray-300 rounded">
+                        <option value="existing" selected>Select from Existing ECG Signals</option>
+                        <option value="upload">Upload New ECG Signal</option>
+                        <option value="drive">Google Drive Link</option>
+                    </select>
+                </div>
+
+                <!-- Existing ECG Section -->
+                <div id="existing-ecg" class="mb-4">
+                    <label for="ecg-select" class="block text-gray-700">Choose an ECG Signal:</label>
+                    <select id="ecg-select" name="ecg-select" class="w-full p-2 border border-gray-300 rounded">
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+
+                <!-- File Upload Section -->
+                <div id="upload-ecg" class="hidden mb-4">
+                    <div id="dropzone" class="dropzone">
+                        <p>Drag & Drop or Click to Upload ECG File</p>
+                        <input type="file" id="file-input" name="file-input" class="hidden" accept=".mat">
+                    </div>
+                    <div id="file-info" class="mt-4"></div>
+                    <div id="progress" class="mt-4">
+                        <div id="progress-bar" class="bg-blue-500 h-2 rounded" style="width: 0%;"></div>
+                    </div>
+                    <p id="upload-status" class="mt-2 text-gray-700">Status: Ready</p>
+                </div>
+
+                <!-- Google Drive Link Section -->
+                <div id="drive-link" class="hidden mb-4">
+                    <label for="google-drive-link" class="block text-gray-700">Google Drive Link:</label>
+                    <input type="text" id="google-drive-link" name="google-drive-link" class="w-full p-2 border border-gray-300 rounded" placeholder="Enter Google Drive link">
+                </div>
+
+                <button type="submit" id="submit-button" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const ecgOptionSelect = document.getElementById('ecg-option');
+        const uploadEcgSection = document.getElementById('upload-ecg');
+        const existingEcgSection = document.getElementById('existing-ecg');
+        const driveLinkSection = document.getElementById('drive-link');
+        const fileInput = document.getElementById('file-input');
+        const dropzone = document.getElementById('dropzone');
+        const fileInfo = document.getElementById('file-info');
+        const progressBar = document.getElementById('progress-bar');
+        const uploadStatus = document.getElementById('upload-status');
+        const ecgSelect = document.getElementById('ecg-select');
+
+        function updateForm() {
+            const selectedOption = ecgOptionSelect.value;
+            if (selectedOption === 'existing') {
+                existingEcgSection.classList.remove('hidden');
+                uploadEcgSection.classList.add('hidden');
+                driveLinkSection.classList.add('hidden');
+                loadExistingEcgFiles(); // Load files when existing option is selected
+            } else if (selectedOption === 'upload') {
+                existingEcgSection.classList.add('hidden');
+                uploadEcgSection.classList.remove('hidden');
+                driveLinkSection.classList.add('hidden');
+            } else if (selectedOption === 'drive') {
+                existingEcgSection.classList.add('hidden');
+                uploadEcgSection.classList.add('hidden');
+                driveLinkSection.classList.remove('hidden');
+            }
+        }
+
+        function loadExistingEcgFiles() {
+            fetch('/list_files') // Adjust this path if needed
+                .then(response => response.json())
+                .then(data => {
+                    if (data.files) {
+                        ecgSelect.innerHTML = '<option value="" disabled selected>Select an ECG signal</option>'; // Clear previous options
+                        data.files.forEach(file => {
+                            if (file.endsWith('.mat')) { // Filter only .mat files
+                                const option = document.createElement('option');
+                                option.value = file;
+                                option.textContent = file;
+                                ecgSelect.appendChild(option);
+                            }
+                        });
+                        if (ecgSelect.options.length === 1) {
+                            // Only the default option is present
+                            ecgSelect.innerHTML = '<option value="" disabled selected>No .mat files available</option>';
+                        }
+                    } else {
+                        console.error('No files key in response:', data);
+                    }
+                })
+                .catch(error => console.error('Error loading files:', error));
+        }
+        
+        ecgOptionSelect.addEventListener('change', updateForm);
+
+        // Set initial state based on the default selected option
+        updateForm();
+
+        dropzone.addEventListener('click', () => fileInput.click());
+        dropzone.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+        dropzone.addEventListener('drop', (event) => {
+            event.preventDefault();
+            dropzone.classList.remove('dragover');
+            handleFiles(event.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', () => handleFiles(fileInput.files));
+
+        function handleFiles(files) {
+            fileInfo.innerHTML = '';
+            progressBar.style.width = '0%';
+            uploadStatus.textContent = 'Status: Ready';
+
+            if (files.length > 0) {
+                const file = files[0];
+                const fileName = file.name;
+                const fileSize = (file.size / 1024).toFixed(2) + ' KB';
+
+                // Check file extension
+                const fileExtension = fileName.split('.').pop().toLowerCase();
+                if (fileExtension !== 'mat') {
+                    uploadStatus.textContent = 'Status: Invalid file type. Please select a .mat file.';
+                    fileInput.value = ''; // Clear the file input
+                    fileInfo.innerHTML = '';
+                    return;
+                }
+
+                fileInfo.innerHTML = `
+                    <p><strong>File Name:</strong> ${fileName}</p>
+                    <p><strong>File Size:</strong> ${fileSize}</p>
+                `;
+
+                // Simulate file upload progress
+                let progress = 0;
+                const interval = setInterval(() => {
+                    progress += 10;
+                    progressBar.style.width = progress + '%';
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        uploadStatus.textContent = 'Status: Upload Complete';
+                    }
+                }, 200);
+            }
+        }
+    </script>
+
+{% endblock %}

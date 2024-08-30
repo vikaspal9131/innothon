@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1s ease-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <!-- Navigation Bar -->
+    <nav class="mt-4">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold ml-8 flex items-center">
+                <i class="ri-drag-move-fill text-3xl mr-2"></i> Predict
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/home" class="text-black hover:text-blue-500 text-xl">Home</a>
+                <a href="/about" class="text-black hover:text-blue-500 text-xl">About</a>
+                <a href="/services" class="text-black hover:text-blue-500 text-xl">Services</a>
+                <a href="/blog" class="text-black hover:text-blue-500 text-xl">Blog</a>
+                <a href="/subscription" class="text-black hover:text-blue-500 text-xl">Subscription</a>
+                <a href="/login"
+                    class="bg-blue-500 ml-8 text-white px-4 py-3 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200">
+                    <i class="ri-user-3-line"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-blue-600 text-white py-16">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-4">About Us</h1>
+            <p class="text-lg">
+
+                We believe in the importance of preventive care and early detection. Our goal is to support you in identifying potential health issues before they become serious, enabling you to seek timely medical advice and take proactive steps towards a healthier future. Whether you are looking to understand your risk factors for common conditions like diabetes, heart disease, or certain cancers, or seeking insights into more specific health concerns, we is here to guide you every step of the way.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto my-12 px-6">
+        <section class="bg-white p-8 rounded-lg shadow-lg slide-up mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">Our Mission</h2>
+            <p class="text-gray-700 leading-relaxed text-center">
+                "We stress early detection and preventive care, helping you manage health risks and ensuring a healthier future. "
+            </p>
+        </section>
+
+        <section class="bg-white p-8 rounded-lg shadow-lg slide-up mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-center">Meet Our Team</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQFS2NcRMnPSfw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1683558818828?e=1729728000&v=beta&t=s7i5025AimFL_MWUmTYcpuDjTTKLppmo1zRH-fWWndk" class="w-32 h-32 mx-auto rounded-full mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Ayush gid</h3>
+                    <p class="mt-4">"Expert in building secure, scalable backend systems. Skilled in databases, APIs, and ensuring efficient, reliable server-side performance."</p>
+                </div>
+                
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQF81xdF0h7lAA/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1672766259072?e=1729728000&v=beta&t=XZ4z9dWM4UVwxmKexSH_eyCgXUwakN_vj3Rh2Cdhw-I" alt="Alice Johnson" class="w-32 h-32 mx-auto rounded-full mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Sourabh Pawar</h3>
+                    <p class="mt-4">"Specializing in developing intelligent algorithms, data analysis, and predictive models to drive insights and automate decision-making processes."</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://via.placeholder.com/150" alt="Bob Smith" class="w-32 h-32 mx-auto rounded-full mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Muskan Suryavanshi</h3>
+                    <p class="mt-4">"Developing and maintaining server-side applications to handle data processing and business logic, ensuring scalability, reliability, and performance."</p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="bg-gray-100 p-6 rounded-lg shadow-md text-center">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQFwhF8MRFxHXQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1694792982514?e=1729728000&v=beta&t=g_iOU9uf-uv52a94OpxaCZEyVX7hogChFdaC8LDIHwc" class="w-32 h-32 mx-auto rounded-full mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Vikas pal</h3>
+                    <p class="mt-4">"Creating intuitive, engaging user interfaces and experiences. Focused on delivering responsive designs that enhance usability and visual appeal."</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white p-8 rounded-lg shadow-lg slide-up">
+            <h2 class="text-3xl font-bold mb-6 text-center">Our Core Values</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="flex items-start">
+                    <div class="bg-blue-500 text-white p-4 rounded-full mr-4">
+                        <i class="ri-rocket-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Innovation</h3>
+                        <p class="text-gray-700">We are dedicated to pushing the frontiers of technology to deliver pioneering solutions that lead the industry.</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-green-500 text-white p-4 rounded-full mr-4">
+                        <i class="ri-heart-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Customer Focus</h3>
+                        <p class="text-gray-700">Our customers are the heart of our endeavors, and we strive to exceed their expectations with every interaction.</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-yellow-500 text-white p-4 rounded-full mr-4">
+                        <i class="ri-thought-cloud-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Transparency</h3>
+                        <p class="text-gray-700">We are committed to transparency, fostering trust and collaboration through open and honest communication.</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <div class="bg-red-500 text-white p-4 rounded-full mr-4">
+                        <i class="ri-honour-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-2">Integrity</h3>
+                        <p class="text-gray-700">We uphold the highest standards of integrity, ensuring ethical conduct and a commitment to doing what is right.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-10 p-4 shadow-md text-center text-gray-700">
+            © 2024 Team Code Esper. All rights reserved
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit error reiciendis ipsam nam soluta voluptates quidem harum voluptas, iste, illo provident autem debitis adipisci. Recusandae nostrum numquam laboriosam nemo atque.
+    </footer>
+</body>
+
+</html>

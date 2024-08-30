@@ -1,0 +1,380 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block content %}
+    <style>
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .accordion-header:hover {
+            background-color: #e5e7eb; /* Tailwind's gray-200 */
+            transition: background-color 0.3s;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .accordion-content.show {
+            max-height: 500px; /* Adjust based on content */
+        }
+
+        .transition-bg {
+            transition: background-color 0.3s ease;
+        }
+
+        .transition-bg:hover {
+            background-color: #d1d5db; /* Tailwind's gray-300 */
+        }
+    </style>
+
+    <!-- Navbar -->
+    <nav class="bg-gray-200 p-6 fixed w-full top-0 z-10 shadow-md pl-64 pt-20">
+        <div class="container mx-auto flex justify-between items-center">
+            <ul class="flex space-x-10">
+                <li><a href="#introduction" class="transition-bg px-4 py-2 rounded hover:bg-blue-100">Introduction</a></li>
+                <li><a href="#setup" class="transition-bg px-4 py-2 rounded hover:bg-blue-100">Setup</a></li>
+                <li><a href="#usage" class="transition-bg px-4 py-2 rounded hover:bg-blue-100">Usage</a></li>
+                <li><a href="#api" class="transition-bg px-4 py-2 rounded hover:bg-blue-100">API</a></li>
+                <li><a href="#faq" class="transition-bg px-4 py-2 rounded hover:bg-blue-100">FAQ</a></li>
+                <li><a href="#features" class="transition-bg px-4 py-2 rounded hover:bg-blue-100">Features</a></li>
+                <li><a href="#additional" class="transition-bg px-4 py-2 rounded hover:bg-blue-100">Additional Info</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-24 px-4 lg:px-8  mt-20">
+        <!-- Introduction -->
+        <section id="introduction" class="mb-12 fade-in ml-80">
+            <h1 class="text-4xl font-bold mb-4 text-blue-700">Introduction</h1>
+            <p class="mb-4">Welcome to the ECG Prediction Tool documentation. This guide will help you understand and use the tool effectively.</p>
+            <p class="mb-4">Our ECG Prediction Tool uses advanced machine learning algorithms to analyze ECG signals and predict potential diseases. The tool is designed to provide accurate and timely predictions, helping users manage their health proactively.</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint architecto vel officia voluptate molestias ad maxime blanditiis dolorum minus sunt praesentium quibusdam, dicta a nostrum, ab asperiores sit doloribus molestiae!</p>
+        </section>
+
+        <!-- Setup -->
+        <section id="setup" class="mb-12 fade-in ml-80">
+            <h2 class="text-3xl font-semibold mb-4 text-blue-600">Setup</h2>
+            <p class="mb-4">To set up the ECG Prediction Tool, follow these steps:</p>
+            <p class="font-semibold mb-2">System Requirements:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Operating System: Windows 10 or later, macOS, or Linux</li>
+                <li>Python 3.7 or later</li>
+                <li>Node.js 12 or later</li>
+                <li>Internet connection</li>
+            </ul>
+            <p class="font-semibold mb-2">Installation Instructions:</p>
+            <pre class="bg-gray-200 p-4 rounded overflow-x-auto"><code>git clone https://github.com/yourusername/yourrepository.git
+cd yourrepository
+npm install
+npm start</code></pre>
+            <p class="font-semibold mb-2">Configuration Settings:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Update configuration files in the `config` directory</li>
+                <li>Set environment variables as needed</li>
+            </ul>
+            <p class="font-semibold mb-2">Common Setup Issues:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Ensure all dependencies are installed correctly</li>
+                <li>Check file permissions and access rights</li>
+                <li>Verify environment variables are set</li>
+            </ul>
+        </section>
+
+        <!-- Usage -->
+        <section id="usage" class="mb-12 fade-in  ml-80">
+            <h2 class="text-3xl font-semibold mb-4 text-blue-600">Usage</h2>
+            <p class="mb-4">Here's how to use the ECG Prediction Tool:</p>
+            <p class="font-semibold mb-2">Uploading ECG Signal Files:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Supported file formats: .mat (MATLAB files)</li>
+                <li>Maximum file size: 100MB</li>
+                <li>To upload, use the file upload interface on the dashboard</li>
+            </ul>
+            <p class="font-semibold mb-2">Submitting Data for Prediction:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Click on the "Submit Data" button after uploading your file</li>
+                <li>Provide any additional information requested</li>
+            </ul>
+            <p class="font-semibold mb-2">Interpreting Prediction Results:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong>Confidence Scores</strong>: Indicates the likelihood of a prediction being correct</li>
+                <li><strong>Disease Information</strong>: Details about the predicted disease, including risk factors and recommendations</li>
+            </ul>
+            <p class="font-semibold mb-2">User Interface Walkthrough:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong>Dashboard</strong>: Overview of uploaded files and prediction results</li>
+                <li><strong>Upload Section</strong>: Where you can upload ECG files</li>
+                <li><strong>Prediction Results</strong>: Displays the results of the analysis</li>
+            </ul>
+        </section>
+
+        <!-- API -->
+        <section id="api" class="mb-12 fade-in ml-80">
+            <h2 class="text-3xl font-semibold mb-4 text-blue-600">API</h2>
+            <p class="mb-4">The API provides endpoints for interacting with the ECG Prediction Tool:</p>
+            <p class="font-semibold mb-2">API Overview:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Base URL: https://api.example.com</li>
+                <li>Authentication: API keys or OAuth tokens required</li>
+            </ul>
+            <p class="font-semibold mb-2">Endpoint Details:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong>GET /api/upload</strong>: Upload ECG signal files
+                    <pre class="bg-gray-200 p-4 rounded"><code>curl -X GET https://api.example.com/upload</code></pre>
+                </li>
+                <li><strong>POST /api/predict</strong>: Submit ECG data for prediction
+                    <pre class="bg-gray-200 p-4 rounded"><code>curl -X POST https://api.example.com/predict -d @data.json</code></pre>
+                </li>
+                <li><strong>GET /api/history</strong>: Retrieve prediction history
+                    <pre class="bg-gray-200 p-4 rounded"><code>curl -X GET https://api.example.com/history</code></pre>
+                </li>
+            </ul>
+            <p class="font-semibold mb-2">Request and Response Formats:</p>
+            <pre class="bg-gray-200 p-4 rounded"><code>{
+  "file": "path/to/your/file.mat",
+  "additional_info": "Any extra info"
+}</code></pre>
+            <p class="font-semibold mb-2">Error Handling and Status Codes:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li>200 OK: Successful request</li>
+                <li>400 Bad Request: Invalid input</li>
+                <li>401 Unauthorized: Invalid API key</li>
+                <li>500 Internal Server Error: Server issues</li>
+            </ul>
+        </section>
+
+        <!-- Features -->
+        <section id="features" class="mb-12 fade-in ml-80">
+            <h2 class="text-3xl font-semibold mb-4 text-blue-600">Features</h2>
+
+            <!-- User Management -->
+            <h3 class="text-xl font-semibold mb-2">User Management</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Creating and managing user accounts</li>
+                <li>Updating profile information</li>
+                <li>Data security and privacy measures</li>
+            </ul>
+
+            <!-- Disease Prediction -->
+            <h3 class="text-xl font-semibold mb-2">Disease Prediction</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Real-time prediction process</li>
+                <li>Prediction history and tracking</li>
+                <li>Confidence scores and their meaning</li>
+            </ul>
+
+            <!-- Personalized Health Insights -->
+            <h3 class="text-xl font-semibold mb-2">Personalized Health Insights</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Health tips and recommendations</li>
+                <li>Preventive measures and wellness tracking</li>
+            </ul>
+
+            <!-- Blog and Articles -->
+            <h3 class="text-xl font-semibold mb-2">Blog and Articles</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Accessing and reading blogs</li>
+                <li>Contributing to the blog (if applicable)</li>
+            </ul>
+
+            <!-- Chatbot Integration -->
+            <h3 class="text-xl font-semibold mb-2">Chatbot Integration</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>How to interact with the chatbot</li>
+                <li>Types of queries the chatbot can handle</li>
+            </ul>
+
+            <!-- Community Forum -->
+            <h3 class="text-xl font-semibold mb-2">Community Forum</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Participating in the forum</li>
+                <li>Posting and replying to topics</li>
+                <li>Moderation and community guidelines</li>
+            </ul>
+
+            <!-- Health Alerts -->
+            <h3 class="text-xl font-semibold mb-2">Health Alerts</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Setting up and managing health alerts</li>
+                <li>Types of alerts and notifications</li>
+            </ul>
+
+            <!-- Reminder System -->
+            <h3 class="text-xl font-semibold mb-2">Reminder System</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Creating and managing reminders</li>
+                <li>Types of reminders available</li>
+            </ul>
+
+            <!-- Wearables Integration -->
+            <h3 class="text-xl font-semibold mb-2">Wearables Integration</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Connecting and syncing wearables</li>
+                <li>Data synchronization and compatibility</li>
+            </ul>
+
+            <!-- Subscription Plans -->
+            <h3 class="text-xl font-semibold mb-2">Subscription Plans</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Overview of available plans</li>
+                <li>Features included in each plan</li>
+                <li>How to upgrade or downgrade plans</li>
+            </ul>
+
+            <!-- Healthcare Provider Integration -->
+            <h3 class="text-xl font-semibold mb-2">Healthcare Provider Integration</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Connecting with healthcare providers</li>
+                <li>Data sharing and privacy considerations</li>
+            </ul>
+
+            <!-- Customer Support -->
+            <h3 class="text-xl font-semibold mb-2">Customer Support</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Contact methods and response times</li>
+                <li>Support resources and documentation</li>
+            </ul>
+
+            <!-- Virtual Consultations -->
+            <h3 class="text-xl font-semibold mb-2">Virtual Consultations</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Scheduling and managing virtual consultations</li>
+                <li>Features available during consultations</li>
+            </ul>
+
+            <!-- Personalized Health Plans -->
+            <h3 class="text-xl font-semibold mb-2">Personalized Health Plans</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Creating and following personalized health plans</li>
+                <li>Tracking progress and making adjustments</li>
+            </ul>
+
+            <!-- Performance Metrics -->
+            <h3 class="text-xl font-semibold mb-2">Performance Metrics</h3>
+            <ul class="list-disc pl-5 mb-4">
+                <li>Overview of performance metrics</li>
+                <li>How metrics are calculated and used</li>
+            </ul>
+        </section>
+
+        <!-- Additional Information -->
+        <section id="additional" class="mb-12 fade-in ml-80">
+            <h2 class="text-3xl font-semibold mb-4 text-blue-600">Additional Information</h2>
+
+            <!-- Data Visualization -->
+            <h3 class="text-xl font-semibold mb-2">Data Visualization</h3>
+            <p class="mb-4">The ECG Prediction Tool provides various visualizations of ECG data:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong>ECG Signal Visualization</strong>: Graphs and charts displaying the ECG signal</li>
+                <li><strong>Prediction Results</strong>: Visual representation of prediction outcomes</li>
+                <li><strong>Comparative Analysis</strong>: Charts comparing predictions with historical data</li>
+            </ul>
+
+            <!-- Technical Documentation -->
+            <h3 class="text-xl font-semibold mb-2">Technical Documentation</h3>
+            <p class="mb-4">For developers and technical users, detailed documentation includes:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong>Algorithms and Models</strong>: Description of machine learning models and algorithms used</li>
+                <li><strong>Performance Benchmarks</strong>: Testing results and benchmarks</li>
+            </ul>
+
+            <!-- Changelog -->
+            <h3 class="text-xl font-semibold mb-2">Changelog</h3>
+            <p class="mb-4">Keep track of updates and changes to the tool:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong>Version 1.0</strong>: Initial release with basic features</li>
+                <li><strong>Version 1.1</strong>: Added support for additional file formats</li>
+                <li><strong>Version 1.2</strong>: Improved prediction accuracy and user interface enhancements</li>
+            </ul>
+
+            <!-- Licenses and Terms of Use -->
+            <h3 class="text-xl font-semibold mb-2">Licenses and Terms of Use</h3>
+            <p class="mb-4">Information on licensing and terms of use:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong>Licensing Information</strong>: Details on the software license</li>
+                <li><strong>Terms of Use</strong>: User agreements and conditions</li>
+            </ul>
+
+            <!-- Feedback and Contributions -->
+            <h3 class="text-xl font-semibold mb-2">Feedback and Contributions</h3>
+            <p class="mb-4">We welcome feedback and contributions to the project:</p>
+            <ul class="list-disc pl-5 mb-4">
+                <li><strong>Feedback</strong>: How to provide feedback on the tool</li>
+                <li><strong>Contributions</strong>: Guidelines for contributing to the project</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-8 ml-48">
+            <div class="container mx-auto text-center">
+                <p class="mb-4">&copy; 2024 ECG Prediction Tool. All rights reserved.</p>
+                <p class="mb-4">For support, please contact <a href="mailto:support@example.com" class="text-blue-400">support@example.com</a></p>
+                <div class="flex justify-center gap-4">
+                    <a href="#home" class="text-blue-400 hover:text-blue-600 transition duration-300">Home</a>
+                    <a href="#features" class="text-blue-400 hover:text-blue-600 transition duration-300">Features</a>
+                    <a href="#faq" class="text-blue-400 hover:text-blue-600 transition duration-300">FAQ</a>
+                    <a href="#additional" class="text-blue-400 hover:text-blue-600 transition duration-300">Additional Info</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- JavaScript for Accordion and Animations -->
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isOpen = content.classList.contains('max-h-0');
+
+                // Close all other accordion content
+                document.querySelectorAll('.accordion-content').forEach(content => {
+                    content.classList.add('max-h-0');
+                    content.classList.remove('max-h-96');
+                    content.style.maxHeight = '0';
+                });
+
+                if (isOpen) {
+                    content.classList.remove('max-h-0');
+                    content.classList.add('max-h-96');
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                } else {
+                    content.classList.add('max-h-0');
+                    content.classList.remove('max-h-96');
+                    content.style.maxHeight = '0';
+                }
+            });
+        });
+
+        // Fade-in animation
+        document.querySelectorAll('.fade-in').forEach(element => {
+            element.classList.add('opacity-0');
+            setTimeout(() => {
+                element.classList.add('transition-opacity');
+                element.classList.remove('opacity-0');
+                element.classList.add('opacity-100');
+            }, 100);
+        });
+    </script>
+    {% endblock %}

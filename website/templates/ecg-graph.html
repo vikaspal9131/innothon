@@ -1,0 +1,488 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediction Form{% endblock %}
+
+{% block content %}
+
+<div class="container pl-80 pr-10 pt-24">
+    <!-- Patient Information and ECG Signal Details -->
+    <div class="flex flex-wrap justify-between mb-4">
+        <!-- Patient Information -->
+        <div class="w-full md:w-1/2 bg-gray-100 p-4 rounded-lg shadow-md">
+            <h2 class="text-lg font-bold mb-2">Patient Information</h2>
+            <div class="mb-2">
+                <span class="font-semibold">Name:</span> John Doe
+            </div>
+            <div class="mb-2">
+                <span class="font-semibold">Age:</span> 45
+            </div>
+            <div class="mb-2">
+                <span class="font-semibold">Gender:</span> Male
+            </div>
+            <div class="mb-2">
+                <span class="font-semibold">ID:</span> 123456
+            </div>
+        </div>
+
+        <!-- ECG Signal Details -->
+        <div class="w-full md:w-1/2 bg-gray-100 p-4 rounded-lg shadow-md">
+            <h2 class="text-lg font-bold mb-2">ECG Signal Details</h2>
+            <div class="mb-2">
+                <span class="font-semibold">Signal Length:</span> 5000
+            </div>
+            <div class="mb-2">
+                <span class="font-semibold">Sampling Rate:</span> 500 Hz
+            </div>
+            <div class="mb-2">
+                <span class="font-semibold">Number of Leads:</span> 12
+            </div>
+            <div class="mb-2">
+                <span class="font-semibold">Data Format:</span> .mat
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters and Operations -->
+    <div class="flex flex-wrap justify-between mb-4">
+        <div class="w-full md:w-1/2 flex justify-between mb-4">
+            <div>
+                <label for="filter" class="mr-2">Filter:</label>
+                <select id="filter" class="border p-2 rounded">
+                    <option value="none">None</option>
+                    <option value="low-pass">Low Pass</option>
+                    <option value="high-pass">High Pass</option>
+                    <option value="moving-average">Moving Average</option>
+                    <option value="band-pass">Band Pass</option>
+                </select>
+            </div>
+            <div>
+                <label for="operation" class="mr-2">Operation:</label>
+                <select id="operation" class="border p-2 rounded">
+                    <option value="none">None</option>
+                    <option value="smooth">Smooth</option>
+                    <option value="normalize">Normalize</option>
+                    <option value="derivative">Derivative</option>
+                    <option value="integral">Integral</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Statistical Analysis -->
+        <div class="w-full md:w-1/2 flex justify-between mb-4">
+            <div>
+                <label for="stats" class="mr-2">Show Stats:</label>
+                <select id="stats" class="border p-2 rounded">
+                    <option value="none">None</option>
+                    <option value="mean">Mean</option>
+                    <option value="std-dev">Standard Deviation</option>
+                    <option value="median">Median</option>
+                    <option value="max">Maximum Value</option>
+                    <option value="min">Minimum Value</option>
+                    <option value="range">Range</option>
+                    <option value="iqr">Interquartile Range</option>
+                    <option value="q1">First Quartile (Q1)</option>
+                    <option value="q3">Third Quartile (Q3)</option>
+                    <option value="kurtosis">Kurtosis</option>
+                    <option value="skewness">Skewness</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Fourier Transform -->
+        <div class="w-full flex justify-between mb-4">
+            <div>
+                <label for="fourier" class="mr-2">Fourier Transform:</label>
+                <select id="fourier" class="border p-2 rounded">
+                    <option value="none">None</option>
+                    <option value="dft">Discrete Fourier Transform (DFT)</option>
+                    <option value="fft">Fast Fourier Transform (FFT)</option>
+                    <option value="stft">Short-Time Fourier Transform (STFT)</option>
+                    <option value="psd">Power Spectral Density (PSD)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- ECG Charts -->
+    <div class="flex flex-wrap mb-8">
+        <!-- Original ECG Chart -->
+        <div class="w-full md:w-1/2 p-2">
+            <h2 class="text-lg font-bold mb-2">Original ECG Signal</h2>
+            <canvas id="originalEcgChart" width="400" height="400" class="border"></canvas>
+        </div>
+
+        <!-- Processed ECG Chart -->
+        <div class="w-full md:w-1/2 p-2">
+            <h2 class="text-lg font-bold mb-2">Processed ECG Signal</h2>
+            <canvas id="processedEcgChart" width="400" height="400" class="border"></canvas>
+        </div>
+    </div>
+
+    <div id="statsDisplay" class="mt-4"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Dummy ECG data
+    const dummyData = Array.from({length: 5000}, (_, i) => Math.sin(i * 0.1) + Math.random() * 0.5);
+
+    const originalCtx = document.getElementById('originalEcgChart').getContext('2d');
+    const processedCtx = document.getElementById('processedEcgChart').getContext('2d');
+
+    const originalEcgChart = new Chart(originalCtx, {
+        type: 'line',
+        data: {
+            labels: dummyData.map((_, i) => i + 1),
+            datasets: [{
+                label: 'Original ECG Signal',
+                data: dummyData,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Time'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Amplitude'
+                    }
+                }
+            }
+        }
+    });
+
+    const processedEcgChart = new Chart(processedCtx, {
+        type: 'line',
+        data: {
+            labels: dummyData.map((_, i) => i + 1),
+            datasets: [{
+                label: 'Processed ECG Signal',
+                data: dummyData, // This will be updated based on the selected filter and operation
+                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Time'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Amplitude'
+                    }
+                }
+            }
+        }
+    });
+
+
+    document.getElementById('filter').addEventListener('change', updateCharts);
+    document.getElementById('operation').addEventListener('change', updateCharts);
+    document.getElementById('stats').addEventListener('change', updateStats);
+    document.getElementById('fourier').addEventListener('change', updateFourierTransform);
+
+
+    
+    function updateCharts() {
+        const filter = document.getElementById('filter').value;
+        const operation = document.getElementById('operation').value;
+        let processedData = [...dummyData];
+
+        if (filter === 'low-pass') {
+            processedData = lowPassFilter(processedData);
+        } else if (filter === 'high-pass') {
+            processedData = highPassFilter(processedData);
+        } else if (filter === 'moving-average') {
+            processedData = movingAverageFilter(processedData);
+        } else if (filter === 'band-pass') {
+            processedData = bandPassFilter(processedData);
+        }
+
+        if (operation === 'smooth') {
+            processedData = smoothSignal(processedData);
+        } else if (operation === 'normalize') {
+            processedData = normalizeSignal(processedData);
+        } else if (operation === 'derivative') {
+            processedData = derivativeSignal(processedData);
+        } else if (operation === 'integral') {
+            processedData = integralSignal(processedData);
+        }
+
+        processedEcgChart.data.datasets[0].data = processedData;
+        processedEcgChart.update();
+    }
+    function updateStats() {
+        const stats = document.getElementById('stats').value;
+        const data = ecgChart.data.datasets[0].data;
+        let statsDisplay = '';
+
+        if (stats === 'mean') {
+            statsDisplay = `Mean: ${meanSignal(data).toFixed(2)}`;
+        } else if (stats === 'std-dev') {
+            statsDisplay = `Standard Deviation: ${stdDevSignal(data).toFixed(2)}`;
+        } else if (stats === 'median') {
+            statsDisplay = `Median: ${medianSignal(data).toFixed(2)}`;
+        } else if (stats === 'max') {
+            statsDisplay = `Maximum Value: ${Math.max(...data).toFixed(2)}`;
+        } else if (stats === 'min') {
+            statsDisplay = `Minimum Value: ${Math.min(...data).toFixed(2)}`;
+        } else if (stats === 'range') {
+            statsDisplay = `Range: ${(Math.max(...data) - Math.min(...data)).toFixed(2)}`;
+        } else if (stats === 'iqr') {
+            statsDisplay = `Interquartile Range: ${iqrSignal(data).toFixed(2)}`;
+        } else if (stats === 'q1') {
+            statsDisplay = `First Quartile (Q1): ${q1Signal(data).toFixed(2)}`;
+        } else if (stats === 'q3') {
+            statsDisplay = `Third Quartile (Q3): ${q3Signal(data).toFixed(2)}`;
+        } else if (stats === 'kurtosis') {
+            statsDisplay = `Kurtosis: ${kurtosisSignal(data).toFixed(2)}`;
+        } else if (stats === 'skewness') {
+            statsDisplay = `Skewness: ${skewnessSignal(data).toFixed(2)}`;
+        } else {
+            statsDisplay = '';
+        }
+
+        document.getElementById('statsDisplay').innerText = statsDisplay;
+    }
+
+    function updateFourierTransform() {
+        const transformType = document.getElementById('fourier').value;
+        let transformData;
+
+        if (transformType === 'none') {
+            return;
+        } else if (transformType === 'dft') {
+            transformData = discreteFourierTransform(dummyData);
+        } else if (transformType === 'fft') {
+            transformData = fastFourierTransform(dummyData);
+        } else if (transformType === 'stft') {
+            transformData = shortTimeFourierTransform(dummyData);
+        } else if (transformType === 'psd') {
+            transformData = powerSpectralDensity(dummyData);
+        }
+
+        if (fourierChart) {
+            fourierChart.destroy();
+        }
+
+        fourierChart = new Chart(fourierCtx, {
+            type: 'line',
+            data: {
+                labels: transformData.map((_, i) => i),
+                datasets: [{
+                    label: 'Fourier Transform',
+                    data: transformData,
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Frequency'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Magnitude'
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function lowPassFilter(data, cutoff = 0.1) {
+        // Simple low-pass filter implementation
+        let result = [];
+        let prev = data[0];
+        for (let i = 0; i < data.length; i++) {
+            let current = cutoff * data[i] + (1 - cutoff) * prev;
+            result.push(current);
+            prev = current;
+        }
+        return result;
+    }
+
+    function highPassFilter(data, cutoff = 0.1) {
+        // Simple high-pass filter implementation
+        let result = [];
+        let prev = data[0];
+        for (let i = 0; i < data.length; i++) {
+            let current = data[i] - prev + (cutoff * prev);
+            result.push(current);
+            prev = data[i];
+        }
+        return result;
+    }
+
+    function movingAverageFilter(data, windowSize = 5) {
+        // Simple moving average filter implementation
+        let result = [];
+        let windowSum = 0;
+        for (let i = 0; i < data.length; i++) {
+            windowSum += data[i];
+            if (i >= windowSize - 1) {
+                result.push(windowSum / windowSize);
+                windowSum -= data[i - windowSize + 1];
+            }
+        }
+        return result;
+    }
+
+    function bandPassFilter(data, lowCutoff = 0.1, highCutoff = 0.3) {
+        // Applying low-pass filter first
+        let lowPassed = lowPassFilter(data, lowCutoff);
+        // Applying high-pass filter to the result
+        return highPassFilter(lowPassed, highCutoff);
+    }
+
+    function smoothSignal(data) {
+        // Apply a simple moving average filter for smoothing
+        return movingAverageFilter(data, 10);
+    }
+
+    function normalizeSignal(data) {
+        // Normalize the signal between 0 and 1
+        const min = Math.min(...data);
+        const max = Math.max(...data);
+        return data.map(val => (val - min) / (max - min));
+    }
+
+    function derivativeSignal(data) {
+        // Calculate the derivative of the signal
+        let result = [];
+        for (let i = 1; i < data.length; i++) {
+            result.push(data[i] - data[i - 1]);
+        }
+        return result;
+    }
+
+    function integralSignal(data) {
+        // Calculate the integral (cumulative sum) of the signal
+        let result = [];
+        let sum = 0;
+        for (let i = 0; i < data.length; i++) {
+            sum += data[i];
+            result.push(sum);
+        }
+        return result;
+    }
+
+    function meanSignal(data) {
+        return data.reduce((a, b) => a + b, 0) / data.length;
+    }
+
+    function stdDevSignal(data) {
+        const mean = meanSignal(data);
+        return Math.sqrt(data.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / data.length);
+    }
+
+    function medianSignal(data) {
+        const sorted = [...data].sort((a, b) => a - b);
+        const mid = Math.floor(sorted.length / 2);
+        return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
+    }
+
+    function iqrSignal(data) {
+        const q1 = q1Signal(data);
+        const q3 = q3Signal(data);
+        return q3 - q1;
+    }
+
+    function q1Signal(data) {
+        const sorted = [...data].sort((a, b) => a - b);
+        const mid = Math.floor(sorted.length / 4);
+        return sorted[mid];
+    }
+
+    function q3Signal(data) {
+        const sorted = [...data].sort((a, b) => a - b);
+        const mid = Math.floor(3 * sorted.length / 4);
+        return sorted[mid];
+    }
+
+    function kurtosisSignal(data) {
+        const mean = meanSignal(data);
+        const n = data.length;
+        const numerator = data.reduce((a, b) => a + Math.pow(b - mean, 4), 0) / n;
+        const denominator = Math.pow(stdDevSignal(data), 4);
+        return numerator / denominator - 3;
+    }
+
+    function skewnessSignal(data) {
+        const mean = meanSignal(data);
+        const n = data.length;
+        const numerator = data.reduce((a, b) => a + Math.pow(b - mean, 3), 0) / n;
+        const denominator = Math.pow(stdDevSignal(data), 3);
+        return numerator / denominator;
+    }
+
+    function discreteFourierTransform(signal) {
+        const N = signal.length;
+        const real = new Array(N).fill(0);
+        const imag = new Array(N).fill(0);
+    
+        for (let k = 0; k < N; k++) {
+            for (let n = 0; n < N; n++) {
+                const angle = (2 * Math.PI * k * n) / N;
+                real[k] += signal[n] * Math.cos(angle);
+                imag[k] -= signal[n] * Math.sin(angle);
+            }
+        }
+    
+        return real.map((r, i) => ({
+            re: r,
+            im: imag[i]
+        }));
+    }
+    
+
+    function fastFourierTransform(signal) {
+        const FFT = window.FFT;
+        const fft = new FFT(signal.length);
+        const phasors = fft.createComplexArray();
+        fft.realTransform(phasors, signal);
+        fft.completeSpectrum(phasors);
+        return phasors.map(c => Math.sqrt(c[0] * c[0] + c[1] * c[1]));
+    }
+
+    function shortTimeFourierTransform(signal, windowSize = 256, overlap = 128) {
+        const result = [];
+        const window = new Array(windowSize).fill(0).map((_, i) => 0.5 * (1 - Math.cos((2 * Math.PI * i) / (windowSize - 1))));
+
+        for (let start = 0; start < signal.length - windowSize; start += overlap) {
+            const segment = signal.slice(start, start + windowSize);
+            const windowedSegment = segment.map((val, i) => val * window[i]);
+            const fftResult = fastFourierTransform(windowedSegment);
+            result.push(fftResult);
+        }
+
+        return result;
+    }
+
+    function powerSpectralDensity(signal) {
+        const fftResult = fastFourierTransform(signal);
+        return fftResult.map(magnitude => Math.pow(magnitude, 2));
+    }
+</script>
+
+{% endblock %}

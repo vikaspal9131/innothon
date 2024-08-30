@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navigation Bar -->
+     <!-- this is only test -->
+     <nav class="mt-4 ">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" >
+              <div class="text-2xl font-bold ml-8"><i class="ri-drag-move-fill text-3xl"></i>Predict</div>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/home" class="text-black hover:text-blue-500 text-xl">Home</a>
+                <a href="/about" class="text-black hover:text-blue-500 text-xl">About</a>
+                <a href="/services" class="text-black hover:text-blue-500 text-xl">Services</a>
+                <a href="/blog" class="text-black hover:text-blue-500 text-xl">Blog</a>
+                <a href="/subscription" class="text-black hover:text-blue-500 text-xl">Subscription</a>
+                <div>
+                    <a href="/login" class="bg-blue-500  ml-8  text-white px-4 py-3 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200  "><i class="ri-user-3-line "></i></a>
+                </div>
+            </div>           
+        </div>
+    </nav>
+    <div class="container mx-auto p-4">
+        <h1 class="text-4xl font-bold text-center mb-8">Heart Disease Prediction</h1>
+        <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <form action="/predict" method="post" class="space-y-6">
+                <div>
+                    <label for="age" class="block text-lg font-medium mb-2">Age</label>
+                    <input type="number" id="age" name="age" min="1" max="120" value="50" required 
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div>
+                    <label for="sex" class="block text-lg font-medium mb-2">Sex</label>
+                    <select id="sex" name="sex" 
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="chest_pain_type" class="block text-lg font-medium mb-2">Chest Pain Type</label>
+                    <select id="chest_pain_type" name="chest_pain_type"
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="TA">Typical Angina</option>
+                        <option value="ATA">Atypical Angina</option>
+                        <option value="NAP">Non-Anginal Pain</option>
+                        <option value="ASY">Asymptomatic</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="resting_bp" class="block text-lg font-medium mb-2">Resting Blood Pressure (mm Hg)</label>
+                    <input type="number" id="resting_bp" name="resting_bp" min="0" max="250" value="120" required 
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div>
+                    <label for="cholesterol" class="block text-lg font-medium mb-2">Cholesterol (mg/dL)</label>
+                    <input type="number" id="cholesterol" name="cholesterol" min="0" max="600" value="200" required 
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div>
+                    <label for="fasting_bs" class="block text-lg font-medium mb-2">Fasting Blood Sugar > 120 mg/dL</label>
+                    <select id="fasting_bs" name="fasting_bs"
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="resting_ecg" class="block text-lg font-medium mb-2">Resting ECG</label>
+                    <select id="resting_ecg" name="resting_ecg"
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="Normal">Normal</option>
+                        <option value="ST">ST-T Wave Abnormality</option>
+                        <option value="LVH">Left Ventricular Hypertrophy</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="max_hr" class="block text-lg font-medium mb-2">Max Heart Rate</label>
+                    <input type="number" id="max_hr" name="max_hr" min="0" max="220" value="150" required 
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div>
+                    <label for="exercise_angina" class="block text-lg font-medium mb-2">Exercise Induced Angina</label>
+                    <select id="exercise_angina" name="exercise_angina"
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="N">No</option>
+                        <option value="Y">Yes</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="oldpeak" class="block text-lg font-medium mb-2">Oldpeak</label>
+                    <input type="number" id="oldpeak" name="oldpeak" step="0.1" min="0.0" max="10.0" value="1.0" required 
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                
+                <div>
+                    <label for="st_slope" class="block text-lg font-medium mb-2">ST Slope</label>
+                    <select id="st_slope" name="st_slope"
+                        class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="Up">Upsloping</option>
+                        <option value="Flat">Flat</option>
+                        <option value="Down">Downsloping</option>
+                    </select>
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                        Predict
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .slide-up {
+            animation: slideUp 1s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <!-- Navigation Bar -->
+    <nav class="mt-4 ">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" >
+              <div class="text-2xl font-bold ml-8"><i class="ri-drag-move-fill text-3xl"></i>Predict</div>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/home" class="text-black hover:text-blue-500 text-xl">Home</a>
+                <a href="/about" class="text-black hover:text-blue-500 text-xl">About</a>
+                <a href="/services" class="text-black hover:text-blue-500 text-xl">Services</a>
+                <a href="/blog" class="text-black hover:text-blue-500 text-xl">Blog</a>
+                <a href="/subscription" class="text-black hover:text-blue-500 text-xl">Subscription</a>
+                <div>
+                    <a href="/login" class="bg-blue-500  ml-8  text-white px-4 py-3 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200  "><i class="ri-user-3-line "></i></a>
+                </div>
+            </div>           
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="bg-blue-600 text-white py-16">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-4">Our Services</h1>
+            <p class="text-lg">Explore our range of innovative solutions designed to enhance your life.</p>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <main class="container mx-auto my-12 px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Service 1 -->
+            <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                <img src="https://www.shutterstock.com/image-photo/businessman-hold-virtual-medical-network-600nw-1917115745.jpg" alt="Service 1" class="w-full h-40 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2">Smart Health Management</h2>
+                    <p class="text-gray-600 mb-4">Transform your healthcare experience with our advanced health solutions. Monitor vital signs, manage medications, and more with ease.</p>
+                    <a href="/services/smart-home" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                <img src="https://www.strategyand.pwc.com/m1/en/strategic-foresight/sector-strategies/healthcare/ai-powered-healthcare-solutions/img01-section1.jpg" alt="Service 2" class="w-full h-40 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2">Predictive Analytics</h2>
+                    <p class="text-gray-600 mb-4">Leverage data to predict trends and make informed decisions. Our analytics services provide valuable insights to drive success.</p>
+                    <a href="/services/predictive-analytics" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                <img src="https://www.learntoupgrade.com/s/store/courses/64e5977fe4b05cf72dc9639f/cover.jpg?v=1" alt="Service 3" class="w-full h-40 object-cover rounded-t-lg">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold mb-2">Comprehensive Health Report</h2>
+                    <p class="text-gray-600 mb-4">Looking for a detailed overview? Our team provides comprehensive health reports tailored to your unique needs, ensuring accurate insights and optimal well-being.</p>
+                    <a href="/services/custom-solutions" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Testimonials Section -->
+    <section class="bg-gray-200 py-12">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-6">What Our Clients Say</h2>
+            <div class="flex flex-wrap justify-center gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+                    <p class="text-gray-600 mb-4">
+                        “Predict's health solutions have revolutionized the way we care for our well-being. The precision and effectiveness are unmatched.”</p>
+                    <p class="font-semibold">Alice Johnson</p>
+                    <p class="text-gray-500">Homeowner</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+                    <p class="text-gray-600 mb-4">“The predictive analytics service provided us with crucial insights that have significantly improved our decision-making process.”</p>
+                    <p class="font-semibold">Bob Smith</p>
+                    <p class="text-gray-500">Business Analyst</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+                    <p class="text-gray-600 mb-4">“Custom solutions from Predict helped us streamline our operations and achieve remarkable results. Highly recommend!”</p>
+                    <p class="font-semibold">Catherine Lee</p>
+                    <p class="text-gray-500">Tech Lead</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white mt-10 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center ">
+            <div class="text-gray-700 w-full text-center ">© 2024 Team Code Esper. All rights reserved.</div>
+        
+        </div>
+    </footer>
+
+</body>
+</html>

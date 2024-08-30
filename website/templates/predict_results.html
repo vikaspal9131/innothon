@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <nav class="mt-4 ">
+        <div class="container mx-auto px-6  flex justify-between items-center">
+            <a href="/" >
+              <div class="text-2xl font-bold ml-8"><i class="ri-drag-move-fill text-3xl"></i>Predict</div>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/home" class="text-black hover:text-blue-500 text-xl">Home</a>
+                <a href="/about" class="text-black hover:text-blue-500 text-xl">About</a>
+                <a href="/services" class="text-black hover:text-blue-500 text-xl">Services</a>
+                <a href="/blog" class="text-black hover:text-blue-500 text-xl">Blog</a>
+                <a href="/subscription" class="text-black hover:text-blue-500 text-xl">Subscription</a>
+                <div>
+                    <a href="/login" class="bg-blue-500  ml-8  text-white px-4 py-3 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200  "><i class="ri-user-3-line "></i></a>
+                </div>
+            </div>           
+        </div>
+    </nav>
+
+    <main class="container mx-auto mt-8 p-4 bg-white rounded-lg shadow-lg">
+        <div class="flex flex-col items-center mb-40">
+            <h2 class="text-xl font-semibold mb-4">Your Predictions</h2>
+
+            {% if predictions %}
+                <div class="w-full max-w-2xl">
+                    <table class="min-w-full bg-white border border-gray-300">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="py-2 px-4 border-b">Model</th>
+                                <th class="py-2 px-4 border-b">Prediction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for model, prediction in predictions.items() %}
+                                <tr>
+                                    <td class="py-2 px-4 border-b text-left">{{ model }}</td>
+                                    <td class="py-2 px-4 border-b text-center">{{ prediction[0] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p class="text-gray-700">No predictions available.</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white p-4 mt-40">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024  Team Code Esper. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

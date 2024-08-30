@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+
+{% block title %}ECG Signal Report{% endblock %}
+
+{% block content %}
+
+<div class="container pl-80 pr-10 pt-24">
+    <!-- Report Header -->
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold">ECG Signal Report</h1>
+        <p class="text-lg mt-2">Detailed analysis of ECG signals and disease diagnosis.</p>
+    </div>
+
+    <!-- Patient Information -->
+    <div class="mb-6 p-4 border border-gray-300 rounded-lg shadow-lg bg-gray-50 transition-transform transform hover:scale-105 duration-300">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Patient Information</h2>
+        <p><strong>Patient ID:</strong> 123456</p>
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Date of Birth:</strong> January 1, 1980</p>
+        <p><strong>Age:</strong> 44</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Contact Information:</strong> john.doe@example.com</p>
+    </div>
+
+    <!-- ECG Signal and Fourier Transform Charts -->
+    <div class="flex flex-wrap">
+        <!-- ECG Signal Chart -->
+        <div class="w-full md:w-1/2 mb-4">
+            <h2 class="text-2xl font-semibold mb-2">ECG Signal</h2>
+            <canvas id="ecgSignalChart" width="800" height="400"></canvas>
+        </div>
+        
+        <!-- Fourier Transform Chart -->
+        <div class="w-full md:w-1/2 mb-4">
+            <h2 class="text-2xl font-semibold mb-2">Fourier Transform</h2>
+            <canvas id="fourierTransformChart" width="800" height="400"></canvas>
+        </div>
+    </div>
+
+    <!-- ECG Signal Details -->
+    <div class="mb-6 p-4 border border-gray-300 rounded-lg shadow-lg bg-gray-50 transition-transform transform hover:scale-105 duration-300">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">ECG Signal Details</h2>
+        <p><strong>Date and Time of Recording:</strong> August 5, 2024, 14:30</p>
+        <p><strong>Recording Duration:</strong> 10 minutes</p>
+        <p><strong>Sampling Rate:</strong> 1000 Hz</p>
+        <p><strong>Signal Length:</strong> 5000 data points</p>
+    </div>
+
+    <!-- Prediction Results -->
+    <div class="mb-6 p-4 border border-gray-300 rounded-lg shadow-lg bg-gray-50 transition-transform transform hover:scale-105 duration-300">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Prediction Results</h2>
+        <p><strong>Predicted Disease/Condition:</strong> Myocardial Infarction</p>
+        <p><strong>Prediction Confidence Score:</strong> 87%</p>
+        <p><strong>Risk Level:</strong> High</p>
+    </div>
+
+   
+
+    
+
+    <!-- Diagnostic Analysis -->
+    <div class="mb-6 p-4 border border-gray-300 rounded-lg shadow-lg bg-gray-50 transition-transform transform hover:scale-105 duration-300">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Diagnostic Analysis</h2>
+        <p><strong>Model Used:</strong> ResNet-50 (Version 1.2)</p>
+        <p><strong>Model Accuracy:</strong> 92% on validation dataset</p>
+        <p><strong>Sensitivity:</strong> 89%</p>
+        <p><strong>Specificity:</strong> 95%</p>
+    </div>
+
+    <!-- Suggested Actions -->
+    <div class="mb-6 p-4 border border-gray-300 rounded-lg shadow-lg bg-gray-50 transition-transform transform hover:scale-105 duration-300">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Suggested Actions</h2>
+        <p><strong>Immediate Actions:</strong> Consult a cardiologist for further evaluation.</p>
+        <p><strong>Follow-Up Recommendations:</strong></p>
+        <ul class="list-disc ml-5 text-gray-700">
+            <li>Regular cardiovascular monitoring</li>
+            <li>Adopt a heart-healthy lifestyle</li>
+            <li>Periodic follow-up ECG tests</li>
+        </ul>
+    </div>
+
+    <!-- Statistical Analysis -->
+    <div class="mb-6 p-4 border border-gray-300 rounded-lg shadow-lg bg-gray-50 transition-transform transform hover:scale-105 duration-300">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Statistical Analysis</h2>
+        <p><strong>Median:</strong> 0.35</p>
+        <p><strong>Maximum Value:</strong> 1.20</p>
+        <p><strong>Minimum Value:</strong> -0.80</p>
+        <p><strong>Range:</strong> 2.00</p>
+        <p><strong>Interquartile Range (IQR):</strong> 0.45</p>
+        <p><strong>Interquartile First Quarter (Q1):</strong> -0.10</p>
+        <p><strong>Interquartile Third Quarter (Q3):</strong> 0.35</p>
+        <p><strong>Kurtosis:</strong> -1.20</p>
+        <p><strong>Skewness:</strong> 0.45</p>
+    </div>
+
+    <!-- Historical Data Comparison -->
+    <div class="mb-6 p-4 border border-gray-300 rounded-lg shadow-lg bg-gray-50 transition-transform transform hover:scale-105 duration-300">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Historical Data Comparison</h2>
+        <p><strong>Previous Predictions:</strong></p>
+        <ul class="list-disc ml-5 text-gray-700">
+            <li>2024-08-01: Myocardial Infarction (85%)</li>
+            <li>2024-07-25: No Anomaly (90%)</li>
+            <li>2024-07-15: Arrhythmia (75%)</li>
+        </ul>
+        <p><strong>Trend Analysis:</strong> Visualization of changes in prediction results over time.</p>
+    </div>
+
+    <!-- Risk Factor Analysis -->
+    <div class="mb-6 p-4 border border-gray-300 rounded-lg shadow-lg bg-gray-50 transition-transform transform hover:scale-105 duration-300">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Risk Factor Analysis</h2>
+        <p><strong>Risk Factors Identified:</strong> High blood pressure, Smoking, Family history.</p>
+        <p><strong>Preventive Measures:</strong></p>
+        <ul class="list-disc ml-5 text-gray-700">
+            <li>Regular cardiovascular check-ups</li>
+            <li>Adopt a heart-healthy diet</li>
+            <li>Engage in regular physical activity</li>
+        </ul>
+    </div>
+
+    <!-- Additional Graphs -->
+    <div class="flex flex-wrap">
+        <!-- Additional Graph 1 -->
+        <div class="w-full md:w-1/2 mb-4">
+            <h2 class="text-2xl font-semibold mb-2">Additional Graph 1</h2>
+            <canvas id="additionalGraph1" width="800" height="400"></canvas>
+        </div>
+
+        <!-- Additional Graph 2 -->
+        <div class="w-full md:w-1/2 mb-4">
+            <h2 class="text-2xl font-semibold mb-2">Additional Graph 2</h2>
+            <canvas id="additionalGraph2" width="800" height="400"></canvas>
+        </div>
+    </div>
+
+<!-- Report Generation -->
+<div class="mb-6 p-4 border border-gray-300 rounded-lg shadow-lg bg-gray-50 transition-transform transform hover:scale-105 duration-300">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Report Generation</h2>
+    <p><strong>Summary Report:</strong> A concise summary of the diagnosis and key findings.</p>
+    <p><strong>Detailed Report:</strong> In-depth analysis including all data, visualizations, and interpretations.</p>
+    <p><strong>Downloadable Report:</strong> Option to download the report in PDF format.</p>
+    <a href="/download_report" class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition duration-300">Download Report</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+    // Dummy data for ECG signal and Fourier Transform
+    const ecgData = Array.from({length: 100}, (_, i) => Math.sin(i * 0.1) + Math.random() * 0.5);
+    const fourierData = Array.from({length: 50}, (_, i) => Math.sin(i * 0.2) + Math.random() * 0.3);
+    const additionalData1 = Array.from({length: 50}, (_, i) => Math.cos(i * 0.2) + Math.random() * 0.4);
+    const additionalData2 = Array.from({length: 50}, (_, i) => Math.sin(i * 0.3) + Math.random() * 0.2);
+
+    const ecgSignalCtx = document.getElementById('ecgSignalChart').getContext('2d');
+    const ecgSignalChart = new Chart(ecgSignalCtx, {
+        type: 'line',
+        data: {
+            labels: ecgData.map((_, i) => i + 1),
+            datasets: [{
+                label: 'ECG Signal',
+                data: ecgData,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Time'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Amplitude'
+                    }
+                }
+            }
+        }
+    });
+
+    const fourierTransformCtx = document.getElementById('fourierTransformChart').getContext('2d');
+    const fourierTransformChart = new Chart(fourierTransformCtx, {
+        type: 'line',
+        data: {
+            labels: fourierData.map((_, i) => i + 1),
+            datasets: [{
+                label: 'Fourier Transform',
+                data: fourierData,
+                borderColor: 'rgba(153, 102, 255, 1)',
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Frequency'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Magnitude'
+                    }
+                }
+            }
+        }
+    });
+
+    const additionalGraph1Ctx = document.getElementById('additionalGraph1').getContext('2d');
+    const additionalGraph1 = new Chart(additionalGraph1Ctx, {
+        type: 'line',
+        data: {
+            labels: additionalData1.map((_, i) => i + 1),
+            datasets: [{
+                label: 'Additional Graph 1',
+                data: additionalData1,
+                borderColor: 'rgba(255, 159, 64, 1)',
+                backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'X-Axis'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Y-Axis'
+                    }
+                }
+            }
+        }
+    });
+
+    const additionalGraph2Ctx = document.getElementById('additionalGraph2').getContext('2d');
+    const additionalGraph2 = new Chart(additionalGraph2Ctx, {
+        type: 'line',
+        data: {
+            labels: additionalData2.map((_, i) => i + 1),
+            datasets: [{
+                label: 'Additional Graph 2',
+                data: additionalData2,
+                borderColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'X-Axis'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Y-Axis'
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Predict</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .slide-up {
+            animation: slideUp 1s ease-out;
+        }
+
+        .hover-effect:hover {
+            transform: scale(1.03);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <!-- Navigation Bar -->
+    <nav class="mt-4 ">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="/" >
+              <div class="text-2xl font-bold ml-8"><i class="ri-drag-move-fill text-3xl"></i>Predict</div>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="/home" class="text-black hover:text-blue-500 text-xl">Home</a>
+                <a href="/about" class="text-black hover:text-blue-500 text-xl">About</a>
+                <a href="/services" class="text-black hover:text-blue-500 text-xl">Services</a>
+                <a href="/blog" class="text-black hover:text-blue-500 text-xl">Blog</a>
+                <a href="/subscription" class="text-black hover:text-blue-500 text-xl">Subscription</a>
+                <div>
+                    <a href="/login" class="bg-blue-500  ml-8  text-white px-4 py-3 rounded-full hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200  "><i class="ri-user-3-line "></i></a>
+                </div>
+            </div>           
+        </div>
+    </nav>
+
+    <!-- Blog Post Header -->
+    <header class="bg-blue-500 text-white py-16">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl font-bold mb-4">The Latest in AI Technology</h1>
+            <p class="text-lg">An in-depth look at the newest advancements in artificial intelligence and their impact.</p>
+        </div>
+    </header>
+
+    <!-- Blog Post Content -->
+    <main class="container mx-auto mt-10 p-6 bg-white rounded-lg shadow-md slide-up">
+        <div class="flex flex-col lg:flex-row lg:space-x-6">
+            <!-- Main Content -->
+            <article class="w-full lg:w-8/12">
+                <!-- Post Metadata -->
+                <div class="mb-6 text-gray-600">
+                    <p>Written by <span class="font-semibold">Jane Doe</span> on <span class="font-semibold">July 30, 2024</span></p>
+                </div>
+
+                <!-- Post Image -->
+                <div class="mb-6">
+                    <img src="https://via.placeholder.com/800x400" alt="Blog Post Image" class="rounded-lg w-full object-cover shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+                </div>
+
+                <!-- Post Body -->
+                <div class="prose max-w-none">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+                    <h2>Advancements in AI</h2>
+                    <p>Artificial intelligence has seen significant growth in recent years, with new technologies emerging that promise to revolutionize various industries. From machine learning algorithms to natural language processing, AI is becoming an integral part of our lives.</p>
+
+                    <h3>Machine Learning</h3>
+                    <p>Machine learning is a branch of AI that focuses on building systems that can learn from and make decisions based on data. It is widely used in applications such as recommendation systems, autonomous vehicles, and predictive analytics.</p>
+
+                    <blockquote class="border-l-4 border-blue-500 italic pl-4 mb-6">
+                        "AI is not just a new technology; it's a fundamental shift in how we approach problem-solving." - Jane Doe
+                    </blockquote>
+
+                    <p>As AI continues to evolve, it is expected to bring about significant changes in various fields, including healthcare, finance, and education. The future of AI is both exciting and challenging, with ethical and societal implications that need to be carefully considered.</p>
+
+                    <h3>Natural Language Processing</h3>
+                    <p>Natural language processing (NLP) is another key area of AI that deals with the interaction between computers and human language. It is used in applications such as chatbots, voice assistants, and sentiment analysis.</p>
+
+                    <p>NLP enables machines to understand, interpret, and respond to human language in a way that is both meaningful and useful. This has opened up new possibilities for communication and information retrieval, making it easier for people to interact with technology.</p>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="mt-10">
+                    <h2 class="text-3xl font-bold mb-4">Comments</h2>
+                    <div class="bg-gray-200 p-6 rounded-lg shadow-md mb-6 hover-effect">
+                        <div class="mb-4">
+                            <p class="text-gray-700"><strong>John Doe</strong>: This is an insightful article! Thanks for sharing.</p>
+                        </div>
+                        <form class="flex flex-col space-y-4">
+                            <input type="text" placeholder="Your name" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            <textarea placeholder="Your comment" class="p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"></textarea>
+                            <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200 transition duration-300 ease-in-out">Post Comment</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Sidebar -->
+            <aside class="w-full lg:w-4/12">
+                <!-- About the Author -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4">About the Author</h2>
+                    <div class="flex items-center bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+                        <img src="https://via.placeholder.com/100" alt="Author" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="text-xl font-semibold">Jane Doe</h3>
+                            <p class="text-gray-700">Jane is a tech enthusiast and writer with a passion for AI and machine learning. She has been writing about technology for over a decade and enjoys exploring the latest trends in the field.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Categories</h2>
+                    <ul class="list-disc list-inside bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+                        <li><a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">AI & Machine Learning</a></li>
+                        <li><a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Data Science</a></li>
+                        <li><a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Tech News</a></li>
+                        <li><a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Product Updates</a></li>
+                        <li><a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Case Studies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Popular Posts -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Popular Posts</h2>
+                    <ul class="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+                        <li class="mb-4">
+                            <a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">How AI is Revolutionizing Healthcare</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">The Future of Autonomous Vehicles</a>
+                        </li>
+                        <li class="mb-4">
+                            <a href="#" class="text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out">Understanding Machine Learning Algorithms</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Subscription -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
+                    <form class="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+                        <input type="email" placeholder="Your email address" class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                        <button type="submit" class="bg-blue-500 text-white w-full py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200 transition duration-300 ease-in-out">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-10 p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-gray-700">&copy; 2024 Predict. All rights reserved.</div>
+            <div class="flex space-x-4">
+                <a href="#" class="text-gray-700 hover:text-blue-500 transition duration-300 ease-in-out">Privacy Policy</a>
+                <a href="#" class="text-gray-700 hover:text-blue-500 transition duration-300 ease-in-out">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

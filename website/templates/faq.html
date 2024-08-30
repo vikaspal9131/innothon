@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ{% endblock %}
+
+{% block content %}
+
+<nav class="faq-nav bg-gray-200 p-4 text-l fixed z-10 ml-8 ">
+    <ul class="flex space-x-4 flex ml-64">
+        <div class="flex gap-8 ">
+            <li><a class="selected" href="#getting-started">Getting Started</a></li>
+            <li><a href="#analysis-details">Analysis Details</a></li>
+            <li><a href="#account-management">Account Management</a></li>
+            <li><a href="#mobile-access">Mobile Access</a></li>
+            <li><a href="#payments-subscriptions">Payments & Subscriptions</a></li>
+            <li><a href="#privacy-security">Privacy & Security</a></li>
+            <li><a href="#delivery-returns">Delivery & Returns</a></li>
+            <li><a href="#technical-support">Technical Support</a></li>
+            <li><a href="#general-information">General Information</a></li>
+        </div>
+    </ul>
+</nav> <!-- faq-nav -->
+
+<section class="faq py-10">
+    <div class="w-full"></div>
+    <section class="faq pt-4">
+        <div class="faq-items">
+            <!-- Getting Started -->
+            <ul id="getting-started" class="faq-group">
+                <li class="faq-title"><h2>Getting Started</h2></li>
+                <li>
+                    <a class="trigger" href="#0">How do I use the ECG prediction form?</a>
+                    <div class="faq-content">
+                        <p>To use the prediction form, simply upload your ECG signal file through the provided upload option. After uploading, you can submit the file for analysis. The system will process your data and provide a prediction along with relevant insights and suggestions based on the analysis.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">What file formats are supported for upload?</a>
+                    <div class="faq-content">
+                        <p>We support .mat files for ECG signal data. Please ensure your file is formatted correctly and adheres to the specified input shape for accurate predictions.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">How long does it take to get a prediction?</a>
+                    <div class="faq-content">
+                        <p>The processing time depends on the size of the ECG signal file and the complexity of the analysis. Typically, it takes a few minutes to generate a prediction and provide insights.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">What information will I receive after submitting my data?</a>
+                    <div class="faq-content">
+                        <p>After submission, you will receive a detailed report including prediction results, disease information, and suggestions for further action. Additionally, you can view data visualizations and compare predictions over time.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">Can I upload multiple ECG signal files at once?</a>
+                    <div class="faq-content">
+                        <p>Yes, you can upload multiple ECG signal files simultaneously. The system will process each file individually and provide separate predictions and insights for each.</p>
+                    </div> <!-- faq-content -->
+                </li>
+            </ul> <!-- faq-group -->
+
+            <!-- Analysis Details -->
+            <ul id="analysis-details" class="faq-group">
+                <li class="faq-title"><h2>Analysis Details</h2></li>
+                <li>
+                    <a class="trigger" href="#0">What kind of analysis is performed on the ECG signals?</a>
+                    <div class="faq-content">
+                        <p>The analysis includes mathematical operations (mean, standard deviation, etc.), Fourier transform, filtering, smoothing, differentiation, and integration. We also provide disease predictions, confidence scores, and detailed analytics on the ECG signals.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">What types of diseases can be diagnosed?</a>
+                    <div class="faq-content">
+                        <p>Our system can diagnose multiple diseases based on the analysis of ECG signals. The specific diseases and conditions are detailed in the prediction report.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">Can I compare previous predictions with new data?</a>
+                    <div class="faq-content">
+                        <p>Yes, you can compare previous predictions with new data using our comparison table and visualizations available on the dashboard.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">What kind of mathematical operations can be performed on the ECG signals?</a>
+                    <div class="faq-content">
+                        <p>The system performs various mathematical operations including mean, standard deviation, range, interquartile range, kurtosis, and skewness, among others.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">What kind of graphs and charts are available on the dashboard?</a>
+                    <div class="faq-content">
+                        <p>The dashboard includes graphs and charts for machine learning metrics (accuracy, inference time, loss, etc.), comparison of previous predictions, and other data visualizations related to ECG signal analysis.</p>
+                    </div> <!-- faq-content -->
+                </li>
+            </ul> <!-- faq-group -->
+
+            <!-- Account Management -->
+            <ul id="account-management" class="faq-group">
+                <li class="faq-title"><h2>Account Management</h2></li>
+                <li>
+                    <a class="trigger" href="#0">How do I create an account?</a>
+                    <div class="faq-content">
+                        <p>To create an account, visit the registration page and provide your details. You'll need to confirm your email address to activate your account and gain full access to the prediction services.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">How do I reset my password?</a>
+                    <div class="faq-content">
+                        <p>If you've forgotten your password, use the "Forgot Password" option on the login page to reset it. You'll receive instructions to create a new password via email.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">Can I update my profile information?</a>
+                    <div class="faq-content">
+                        <p>Yes, you can update your profile information by logging into your account and accessing the profile settings. Make any necessary changes and save them to update your profile.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">How do I delete my account?</a>
+                    <div class="faq-content">
+                        <p>To delete your account, contact our support team through the contact form or email. We will process your request and remove your account and associated data from our system.</p>
+                    </div> <!-- faq-content -->
+                </li>
+            </ul> <!-- faq-group -->
+
+            <!-- Mobile Access -->
+            <ul id="mobile-access" class="faq-group">
+                <li class="faq-title"><h2>Mobile Access</h2></li>
+                <li>
+                    <a class="trigger" href="#0">How can I upload ECG files from my mobile device?</a>
+                    <div class="faq-content">
+                        <p>You can upload ECG files from your mobile device using the same upload functionality available on the desktop site. Select the file from your device's storage and submit it for analysis.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">Can I view my predictions on my mobile device?</a>
+                    <div class="faq-content">
+                        <p>Yes, you can view predictions and detailed reports on your mobile device. The data visualizations and insights are accessible through your mobile browser.</p>
+                    </div> <!-- faq-content -->
+                </li>
+            </ul> <!-- faq-group -->
+
+            <!-- Payments & Subscriptions -->
+            <ul id="payments-subscriptions" class="faq-group">
+                <li class="faq-title"><h2>Payments & Subscriptions</h2></li>
+                <li>
+                    <a class="trigger" href="#0">How can I view my payment history?</a>
+                    <div class="faq-content">
+                        <p>You can view your payment history by logging into your account and accessing the payment history section. Here, you will find details of all past transactions.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">What should I do if my payment fails?</a>
+                    <div class="faq-content">
+                        <p>If your payment fails, check your payment details and ensure your account has sufficient funds. If the issue persists, contact our support team for assistance.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">Can I request a refund?</a>
+                    <div class="faq-content">
+                        <p>Refunds are available under specific conditions. Please refer to our refund policy or contact customer support for more information on how to request a refund.</p>
+                    </div> <!-- faq-content -->
+                </li>
+            </ul> <!-- faq-group -->
+
+            <!-- Privacy & Security -->
+            <ul id="privacy-security" class="faq-group">
+                <li class="faq-title"><h2>Privacy & Security</h2></li>
+                <li>
+                    <a class="trigger" href="#0">How is my data protected?</a>
+                    <div class="faq-content">
+                        <p>Your data is protected using industry-standard encryption and security protocols. We implement measures to safeguard your data and ensure its confidentiality.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">Can I access or delete my personal data?</a>
+                    <div class="faq-content">
+                        <p>Yes, you can access and request the deletion of your personal data by contacting our support team. We will provide you with the necessary information and process your request accordingly.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">How do you handle data breaches?</a>
+                    <div class="faq-content">
+                        <p>In the event of a data breach, we follow our incident response plan to mitigate the impact, notify affected users, and work towards preventing future breaches.</p>
+                    </div> <!-- faq-content -->
+                </li>
+            </ul> <!-- faq-group -->
+
+            <!-- Delivery & Returns -->
+            <ul id="delivery-returns" class="faq-group">
+                <li class="faq-title"><h2>Delivery & Returns</h2></li>
+                <li>
+                    <a class="trigger" href="#0">What should I do if my order hasn't been delivered yet?</a>
+                    <div class="faq-content">
+                        <p>If your order has not been delivered within the expected time frame, contact our support team with your order details. We will investigate and provide an update on the delivery status.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">How can I find your international delivery information?</a>
+                    <div class="faq-content">
+                        <p>International delivery information is available on our website under the shipping section. You can find details on shipping rates, delivery times, and applicable regions.</p>
+                        
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">Who takes care of shipping?</a>
+                    <div class="faq-content">
+                        <p>Shipping is handled by our partnered courier services. We work with reliable shipping providers to ensure timely and secure delivery of your orders.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">How do returns or refunds work?</a>
+                    <div class="faq-content">
+                        <p>To return a product, follow the return instructions provided in our return policy. Refunds are processed according to our refund policy once the returned item is received and inspected.</p>
+                    </div> <!-- faq-content -->
+                </li>
+            </ul> <!-- faq-group -->
+
+            <!-- Technical Support -->
+            <ul id="technical-support" class="faq-group">
+                <li class="faq-title"><h2>Technical Support</h2></li>
+                <li>
+                    <a class="trigger" href="#0">Who can I contact for technical support?</a>
+                    <div class="faq-content">
+                        <p>You can contact our technical support team through the support page or by emailing support@example.com. Our team is available to assist with any technical issues or questions you may have.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">How do I report a bug or issue?</a>
+                    <div class="faq-content">
+                        <p>To report a bug or issue, use the contact form on our website or send an email to support@example.com with detailed information about the problem. We will investigate and work towards a resolution.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">What should I do if I encounter a problem with the dashboard?</a>
+                    <div class="faq-content">
+                        <p>If you encounter a problem with the dashboard, try refreshing the page or clearing your browser cache. If the issue persists, contact our support team for further assistance.</p>
+                    </div> <!-- faq-content -->
+                </li>
+            </ul> <!-- faq-group -->
+
+            <!-- General Information -->
+            <ul id="general-information" class="faq-group">
+                <li class="faq-title"><h2>General Information</h2></li>
+                <li>
+                    <a class="trigger" href="#0">What is the purpose of this ECG prediction tool?</a>
+                    <div class="faq-content">
+                        <p>The ECG prediction tool is designed to analyze ECG signals to provide early disease detection and insights. It helps users understand their cardiac health and take preventive measures.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">How accurate are the predictions?</a>
+                    <div class="faq-content">
+                        <p>The accuracy of predictions depends on the quality of the ECG signal data and the model used. Our system uses advanced machine learning algorithms to provide reliable predictions.</p>
+                    </div> <!-- faq-content -->
+                </li>
+                <li>
+                    <a class="trigger" href="#0">Are there any limitations to the analysis provided?</a>
+                    <div class="faq-content">
+                        <p>While our system provides valuable insights, it is not a substitute for professional medical advice. Always consult a healthcare provider for a comprehensive evaluation of your health.</p>
+                    </div> <!-- faq-content -->
+                </li>
+            </ul> <!-- faq-group -->
+        </div> <!-- faq-items -->
+    </section>
+</section>
+
+{% endblock %}
